@@ -10,20 +10,6 @@ export const navItems = [
   },
   {
     title: true,
-    name: 'Theme'
-  },
-  {
-    name: 'Colors',
-    url: '/theme/colors',
-    icon: 'icon-drop'
-  },
-  {
-    name: 'Typography',
-    url: '/theme/typography',
-    icon: 'icon-pencil'
-  },
-  {
-    title: true,
     name: 'Components'
   },
   {
@@ -186,33 +172,63 @@ export const navItems = [
   },
   {
     title: true,
-    name: 'Extras',
+    name: 'Data Analytics',
   },
   {
-    name: 'Pages',
-    url: '/pages',
-    icon: 'icon-star',
-    children: [
-      {
-        name: 'Login',
-        url: '/login',
-        icon: 'icon-star'
-      },
-      {
-        name: 'Register',
-        url: '/register',
-        icon: 'icon-star'
-      },
-      {
-        name: 'Error 404',
-        url: '/404',
-        icon: 'icon-star'
-      },
-      {
-        name: 'Error 500',
-        url: '/500',
-        icon: 'icon-star'
-      }
-    ]
+    name: 'Incidents',
+    url: '/incidents',
+    icon: 'icon-speedometer',
+    badge: {
+      variant: 'info',
+      text: 'NEW'
+    }
+  },
+  {
+    name: 'Alarms',
+    url: '/alarms',
+    icon: 'icon-speedometer',
+    badge: {
+      variant: 'info',
+      text: 'NEW'
+    }
+  },
+  {
+    divider: true
+  },
+  {
+    title: true,
+    name: 'Resource usage',
+  },
+  {
+    name: 'CPU',
+    url: '/cpu',
+    icon: 'icon-speedometer'
+  },
+  {
+    name: 'Memory',
+    url: '/memory',
+    icon: 'icon-speedometer'
+  },
+  {
+    name: 'Services',
+    url: '/services',
+    icon: 'icon-speedometer'
+  },
+  {
+    name: 'Threads',
+    url: '/thread',
+    icon: 'icon-speedometer'
+  },
+  {
+    divider: true
+  },
+  {
+    title: true,
+    name: 'Manage',
+  },
+  {
+    name: 'Reports',
+    url: '/reports',
+    icon: 'icon-speedometer'
   }
 ];
