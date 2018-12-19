@@ -1,0 +1,14 @@
+.summary-legend{
+  padding: 2px 5px;
+}
+
+.summary-legend:hover{
+ background-color: #D6EAF8;
+ cursor: pointer;
+ border: 1px solid #E5E7E9;
+ padding: 1px 4px;
+}
+
+.summary-legend:hover div.text-muted {
+  color: #fff;
+}

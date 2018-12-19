@@ -6,9 +6,11 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { FormsModule } from '@angular/forms';
 
 import {TimeseriesComponent} from './timeseries.component';
+import { DatetitleComponent } from './datetitle/datetitle.component';
+import { SummaryLegendComponent } from './summary-legend/summary-legend.component';
 
 @NgModule({
-  declarations: [TimeseriesComponent],
+  declarations: [TimeseriesComponent, DatetitleComponent, SummaryLegendComponent],
   imports: [
     CommonModule,
     ChartsModule,

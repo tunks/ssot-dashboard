@@ -1,0 +1,13 @@
+<div class="summary-legend">
+  <div class="text-muted">{{legendTitle}}</div>
+  <div> 
+      <strong>{{count}}</strong>
+      <span class="badge-pill badge-secondary">{{percent}}%</span>
+    </div>
+    <div class="progress progress-xs mt-2">
+    <div class="progress-bar {{legendStyle}}" 
+    role="progressbar"  
+    [style.width]="percent + '%'" 
+    [attr.aria-valuenow]="percent" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+</div>
