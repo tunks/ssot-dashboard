@@ -1,17 +1,20 @@
 <div class="card">
     <div class="card-body">
       <div class="row">
-        <div class="col-sm-5">
-          <app-datetitle [title]="alarmChartTitle" [currentDate]="lastUpdatedTimestamp"></app-datetitle>
+        <div class="col-sm-4">
+          <app-datetitle [title]="chartTitle" [currentDate]="lastUpdatedTimestamp"></app-datetitle>
         </div><!--/.col-->
-        <div class="col-sm-7 d-none d-md-block">
-          <button type="button" class="btn btn-primary float-right"><i class="icon-cloud-download"></i></button>
-          <div class="btn-group btn-group-toggle float-right mr-3" data-toggle="buttons">
+        <div class="col-sm-5 d-none d-md-block">
+          <!--<button type="button" class="btn btn-primary float-right"><i class="icon-cloud-download"></i></button> -->
+          <!---<div class="btn-group btn-group-toggle float-right mr-3" data-toggle="buttons">
             <label class="btn btn-outline-secondary" [(ngModel)]="radioModel" btnRadio="Day" id="option1">Day</label>
             <label class="btn btn-outline-secondary" [(ngModel)]="radioModel" btnRadio="Month" id="option2">Month</label>
             <label class="btn btn-outline-secondary" [(ngModel)]="radioModel" btnRadio="Year" id="option3">Year</label>
           </div>
+          -->
         </div><!--/.col-->
+        <div class="col-sm-3 d-none d-md-block">
+        </div>
       </div><!--/.row-->
       <div class="chart-wrapper" style="height:300px;margin-top:40px;">
         <canvas baseChart class="chart"

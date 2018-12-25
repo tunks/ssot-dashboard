@@ -8,9 +8,10 @@ import { FormsModule } from '@angular/forms';
 import {TimeseriesComponent} from './timeseries.component';
 import { DatetitleComponent } from './datetitle/datetitle.component';
 import { SummaryLegendComponent } from './summary-legend/summary-legend.component';
+import { DatetimesliderComponent } from './datetimeslider/datetimeslider.component';
 
 @NgModule({
-  declarations: [TimeseriesComponent, DatetitleComponent, SummaryLegendComponent],
+  declarations: [TimeseriesComponent, DatetitleComponent, SummaryLegendComponent, DatetimesliderComponent],
   imports: [
     CommonModule,
     ChartsModule,

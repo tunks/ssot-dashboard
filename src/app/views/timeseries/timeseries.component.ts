@@ -1,23 +1,19 @@
-import { Component, OnInit , ViewChild} from '@angular/core';
+import { Component, OnInit , ViewChild, Input, OnChanges, SimpleChanges, SimpleChange} from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { BaseChartDirective } from 'ng2-charts/ng2-charts';
-import {DummyUtil, ChartData} from '../../data';
+import {DummyService, ChartData, ChartElement} from '../../data';
 
 @Component({
   selector: 'app-timeseries',
   templateUrl: './timeseries.component.html',
   styleUrls: ['./timeseries.component.scss'],
+  providers: [DummyService]
 })
-export class TimeseriesComponent implements OnInit {
+export class TimeseriesComponent implements OnChanges, OnInit {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective;
-
-  private dataUtil = new DummyUtil();
-  // mainChart
-  public mainChartElements = 60;
-  public alarmChartTitle: String = 'Alarms';
-  public mainChartData = this.resetData();
-  public mainChartLabels = Array<string>();
+  @Input()
+  public chartTitle: String ;
   /* tslint:enable:max-line-length */
   radioModel: String = 'Day';
 
@@ -86,8 +82,7 @@ export class TimeseriesComponent implements OnInit {
       backgroundColor: 'transparent',
       borderColor: '#FFEB3B', // getStyle('--warning'),
       pointHoverBackgroundColor: '#fff',
-      borderWidth: 2,
-     // borderDash: [8, 5]
+      borderWidth: 2
     },
     { // brandDanger
       backgroundColor: 'transparent',
@@ -99,32 +94,29 @@ export class TimeseriesComponent implements OnInit {
   ];
   public mainChartLegend = false;
   public mainChartType = 'line';
+  @Input()
+  public mainChartData = Array<any>();
+  @Input()
   public legendData: Array<any> = [];
-  public legendTitles: Array<String> = [ 'Unpaired', 'Processed', 'Pending', 'Delayed'];
-  public legendStyles: Array<String> = [ 'bg-warning', 'bg-success', 'bg-info', 'bg-danger'];
-  public lastUpdatedTimestamp: number = Date.now();
-  constructor() { }
+  @Input()
+  public legendTitles =  [];
+  @Input()
+  public lastUpdatedTimestamp: number;
+  @Input()
+  public mainChartLabels = Array<string>();
 
-  public random(min: number, max: number) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
+  public legendStyles: Array<String> = [ 'bg-info', 'bg-success', 'bg-warning',  'bg-danger'];
+
+  constructor(private dummyService: DummyService) {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    const name: SimpleChange = changes.name;
+  //  console.log('prev value: ', name.previousValue);
+    // console.log('got name: ', name.currentValue);
   }
 
   ngOnInit(): void {
-    // generate random values for mainChart
-    this.initChartData();
-    this.refreshChart();
-    // update legend data
-    let percent = 0;
-    const total = 150000;
-    for (let k = 4; k >= 1 ; k-- ) {
-        percent = 100 - percent - k * 10;
-        this.legendData.push({ legendTitle : this.legendTitles[k - 1],
-                                count : total * (percent / 100),
-                                percent: percent,
-                                legendStyle: this.legendStyles[k - 1]
-                             });
-    }
-
   }
   // events
   public chartClicked(e: any) {
@@ -134,51 +126,21 @@ export class TimeseriesComponent implements OnInit {
     console.log(e);
   }
 
-  private updateChartData(data: ChartData, index: number ) {
-    for ( let i = 0; i < this.mainChartData.length ; i++) {
-      this.mainChartData[i].data.push(data.values[i]);
+   private updateChartLegend(summary: Array<number>) {
+    let count = 0;
+    let total = 0;
+    for (let i = 0 ; i < summary.length; i++ ) {
+         total += summary[i];
     }
-    this.mainChartLabels[index] = data.timestamp;
-  }
 
-  private initChartData() {
-     this.mainChartData = this.resetData();
-     const data = this.dataUtil.generateData(this.mainChartElements);
-     console.log(data[0]);
-     for (let i = 0; i < this.mainChartElements; i++) {
-        this.updateChartData(data[i], i);
+    for (let k = summary.length - 1; k >= 0 ; k-- ) {
+        count = summary[k];
+        this.legendData[k] = { legendTitle : this.legendTitles[k],
+                                count : count,
+                                percent: Math.round((count / total) * 100),
+                                legendStyle: this.legendStyles[k]
+                             };
     }
-    console.log('chart lable first: ' + this.mainChartLabels[0]);
-    this.lastUpdatedTimestamp = Date.now();
-  }
-
-  private refreshChart() {
-    setInterval(() => {
-             console.log('updating chart data');
-            this.initChartData();
-    }, 5000);
-   }
-
-   private resetData() {
-    const data: Array<any> = [
-      {
-        data: Array <number>(),
-        label: 'Dequeued'
-      },
-      {
-        data:  Array <number>(),
-        label: 'Processed'
-      },
-      {
-        data:  Array <number>(),
-        label: 'Unpaired'
-      },
-      {
-        data:  Array <number>(),
-        label: 'Pending'
-      }
-    ];
-    return data;
    }
 
 }

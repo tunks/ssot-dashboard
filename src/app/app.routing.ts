@@ -13,28 +13,7 @@ export const routes: Routes = [
   {
     path: '',
     redirectTo: 'dashboard',
-    pathMatch: 'full',
-  },
-  {
-    path: '404',
-    component: P404Component,
-    data: {
-      title: 'Page 404'
-    }
-  },
-  {
-    path: '500',
-    component: P500Component,
-    data: {
-      title: 'Page 500'
-    }
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-    data: {
-      title: 'Login Page'
-    }
+    pathMatch: 'full'
   },
   {
     path: 'register',
@@ -81,6 +60,18 @@ export const routes: Routes = [
       {
         path: 'widgets',
         loadChildren: './views/widgets/widgets.module#WidgetsModule'
+      },
+      {
+        path: 'alarms',
+        loadChildren: './views/alarms/alarms.module#AlarmsModule'
+      },
+      {
+        path: 'incidents',
+        loadChildren: './views/incidents/incidents.module#IncidentsModule'
+      },
+      {
+        path: 'services',
+        loadChildren: './views/services/services.module#ServicesModule'
       }
     ]
   }

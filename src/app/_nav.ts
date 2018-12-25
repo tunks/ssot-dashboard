@@ -38,26 +38,11 @@ export const navItems = [
   },
   {
     title: true,
-    name: 'Resource usage',
-  },
-  {
-    name: 'CPU',
-    url: '/cpu',
-    icon: 'icon-speedometer'
-  },
-  {
-    name: 'Memory',
-    url: '/memory',
-    icon: 'icon-speedometer'
+    name: 'Resources',
   },
   {
     name: 'Services',
     url: '/services',
-    icon: 'icon-speedometer'
-  },
-  {
-    name: 'Threads',
-    url: '/thread',
     icon: 'icon-speedometer'
   },
   {

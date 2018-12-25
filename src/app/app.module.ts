@@ -19,6 +19,8 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+import {DatetimesliderComponent} from './views/timeseries/datetimeslider/datetimeslider.component';
+
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -39,6 +41,8 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { Ng5SliderModule } from 'ng5-slider';
+import { BulletChartComponent } from './views/d3-charts/bullet-chart/bullet-chart.component';
 
 @NgModule({
   imports: [
@@ -52,7 +56,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    Ng5SliderModule
   ],
   declarations: [
     AppComponent,
@@ -61,6 +66,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     P500Component,
     LoginComponent,
     RegisterComponent,
+    DatetimesliderComponent,
+    BulletChartComponent
   ],
   providers: [{
     provide: LocationStrategy,
