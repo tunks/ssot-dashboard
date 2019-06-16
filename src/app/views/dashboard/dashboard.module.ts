@@ -5,12 +5,12 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { Ng5SliderModule } from 'ng5-slider';
-
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import {TimeseriesComponent} from '../timeseries/timeseries.component';
 import {DatetitleComponent} from '../timeseries/datetitle/datetitle.component';
 import {SummaryLegendComponent} from '../timeseries/summary-legend/summary-legend.component';
+import { ChartWidgetComponent } from '../chart-widget/chart-widget.component';
 
 @NgModule({
   imports: [
@@ -25,6 +25,8 @@ import {SummaryLegendComponent} from '../timeseries/summary-legend/summary-legen
   declarations: [ DashboardComponent,
                   TimeseriesComponent,
                   DatetitleComponent,
-                  SummaryLegendComponent]
+                  SummaryLegendComponent,
+                  ChartWidgetComponent
+                ]
 })
 export class DashboardModule { }

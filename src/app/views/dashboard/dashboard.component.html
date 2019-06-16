@@ -1,4 +1,10 @@
 <div class="animated fadeIn">
+ <div class="row">
+    <div class="col-md-2 col-sm-4">
+      <app-chart-widget></app-chart-widget>
+    </div>
+  </div>
+  
   <div>
       <div *ngFor="let dt of chartData">
          <app-timeseries [chartTitle]="dt.name" 
